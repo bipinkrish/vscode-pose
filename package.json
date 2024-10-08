@@ -3,7 +3,7 @@
 	"displayName": "Pose Viewer",
 	"description": "visualize .pose files right in your vscode",
 	"version": "0.0.1",
-	"publisher": "bipinkrish",
+	"publisher": "Bipin Krishna",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
