@@ -1,5 +1,4 @@
 import * as vscode from 'vscode';
-import { getNonce } from './util';
 
 export class PoseViewerProvider implements vscode.CustomReadonlyEditorProvider {
     public static register(context: vscode.ExtensionContext): vscode.Disposable {
@@ -38,17 +37,15 @@ export class PoseViewerProvider implements vscode.CustomReadonlyEditorProvider {
 
     private getHtmlForWebview(webview: vscode.Webview, imageUri: vscode.Uri): string {
         const webviewImageUri = webview.asWebviewUri(imageUri);
-        const nonce = getNonce();
 
         return `
             <!DOCTYPE html>
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
-                <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src ${webview.cspSource} data:; style-src ${webview.cspSource} 'unsafe-inline'; script-src 'nonce-${nonce}' 'unsafe-eval' https://unpkg.com; connect-src ${webview.cspSource};">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Pose Viewer</title>
-                <script nonce="${nonce}" src="https://unpkg.com/pose-viewer@latest/dist/pose-viewer/pose-viewer.esm.js" type="module"></script>
+                <script src="https://unpkg.com/pose-viewer@latest/dist/pose-viewer/pose-viewer.esm.js" type="module"></script>
                 <style>
                     body {
                         display: flex;
@@ -58,7 +55,6 @@ export class PoseViewerProvider implements vscode.CustomReadonlyEditorProvider {
                         width: 100vw;
                         margin: 0px;
                         padding: 0px;
-                        background-color: var(--vscode-editor-background);
                     }
                 </style>
             </head>
