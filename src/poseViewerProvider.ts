@@ -37,6 +37,9 @@ export class PoseViewerProvider implements vscode.CustomReadonlyEditorProvider {
 
     private getHtmlForWebview(webview: vscode.Webview, imageUri: vscode.Uri): string {
         const webviewImageUri = webview.asWebviewUri(imageUri);
+        const localSrcUri = webview.asWebviewUri(
+            vscode.Uri.joinPath(this.context.extensionUri, 'src', 'lib', 'pose-viewer.esm.js')
+        );
 
         return `
             <!DOCTYPE html>
@@ -45,7 +48,15 @@ export class PoseViewerProvider implements vscode.CustomReadonlyEditorProvider {
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Pose Viewer</title>
-                <script src="https://unpkg.com/pose-viewer@latest/dist/pose-viewer/pose-viewer.esm.js" type="module"></script>
+                <script type="module">
+                    import('https://unpkg.com/pose-viewer@latest/dist/pose-viewer/pose-viewer.esm.js')
+                        .catch(() => {
+                            const script = document.createElement('script');
+                            script.type = 'module';
+                            script.src = '${localSrcUri}';
+                            document.head.appendChild(script);
+                        });
+                </script>
                 <style>
                     body {
                         display: flex;
