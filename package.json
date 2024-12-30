@@ -2,7 +2,7 @@
   "name": "pose",
   "displayName": "Pose Viewer",
   "description": "visualize .pose files right in your vscode",
-  "version": "0.0.4",
+  "version": "0.0.41",
   "icon": "images/pose.png",
   "publisher": "bipinkrish",
   "license": "MIT",

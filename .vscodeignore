@@ -1,1 +1,4 @@
 exampleFiles
+node_modules
+.vscode
+*.vsix
