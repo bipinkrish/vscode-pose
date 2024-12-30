@@ -1,64 +1,75 @@
 {
-	"name": "pose",
-	"displayName": "Pose Viewer",
-	"description": "visualize .pose files right in your vscode",
-	"version": "0.0.3",
-	"icon": "images/pose.png",
-	"publisher": "bipinkrish",
-	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/bipinkrish/vscode-pose"
-	},
-	"engines": {
-		"vscode": "^1.74.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [],
-	"main": "./out/extension.js",
-	"contributes": {
-		"customEditors": [
-			{
-				"viewType": "poseViewer.pose",
-				"displayName": "Pose Viewer",
-				"selector": [
-					{
-						"filenamePattern": "*.pose"
-					}
-				],
-				"priority": "default"
-			}
-		],
-		"languages": [
-			{
-				"id": "pose",
-				"aliases": [
-					"Pose"
-				],
-				"extensions": [
-					".pose"
-				],
-				"icon": {
-					"light": "images/pose.png",
-					"dark": "images/pose.png"
-				}
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"lint": "eslint \"src/**/*.ts\"",
-		"watch": "tsc -w -p ./"
-	},
-	"devDependencies": {
-		"@types/node": "^18",
-		"@types/vscode": "^1.73.0",
-		"@typescript-eslint/eslint-plugin": "^7.14.0",
-		"@typescript-eslint/parser": "^7.14.0",
-		"eslint": "^8.26.0",
-		"typescript": "^5.5.2"
-	}
+  "name": "pose",
+  "displayName": "Pose Viewer",
+  "description": "visualize .pose files right in your vscode",
+  "version": "0.0.4",
+  "icon": "images/pose.png",
+  "publisher": "bipinkrish",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bipinkrish/vscode-pose"
+  },
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "poseViewer.pose",
+        "displayName": "Pose Viewer",
+        "selector": [
+          {
+            "filenamePattern": "*.pose"
+          }
+        ],
+        "priority": "default"
+      }
+    ],
+    "languages": [
+      {
+        "id": "pose",
+        "aliases": [
+          "Pose"
+        ],
+        "extensions": [
+          ".pose"
+        ],
+        "icon": {
+          "light": "images/pose.png",
+          "dark": "images/pose.png"
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./ && webpack --mode production",
+    "watch": "tsc -w -p ./ & webpack --mode development --watch",
+    "lint": "eslint \"src/**/*.ts\""
+  },
+  "devDependencies": {
+    "@types/node": "^18",
+    "@types/vscode": "^1.73.0",
+    "@typescript-eslint/eslint-plugin": "^7.14.0",
+    "@typescript-eslint/parser": "^7.14.0",
+    "eslint": "^8.26.0",
+    "typescript": "^5.5.2"
+  },
+  "dependencies": {
+    "@stencil/core": "^4.23.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^19.0.2",
+    "react": "^18.3.1",
+    "react-dom": "^19.0.0",
+    "react-pose-viewer": "^1.0.32",
+    "ts-loader": "^9.5.1",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
+  }
 }
