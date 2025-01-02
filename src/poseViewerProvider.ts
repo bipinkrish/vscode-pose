@@ -30,6 +30,7 @@ export class PoseViewerProvider implements vscode.CustomReadonlyEditorProvider {
       enableScripts: true,
     };
 
+    // this.context.globalState
     const documentUri = webviewPanel.webview.asWebviewUri(document.uri);
     const webviewUri = vscode.Uri.joinPath(
       this.context.extensionUri,
@@ -38,19 +39,10 @@ export class PoseViewerProvider implements vscode.CustomReadonlyEditorProvider {
     );
 
     webviewPanel.webview.html = `
-      <style>
-        body {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-          width: 100vw;
-          margin: 0px;
-          padding: 0px;
-        }
-      </style>
       <div id="root"></div>
-      <script>const documentUri = "${documentUri}";</script>
+      <script>
+        const documentUri = "${documentUri}";
+      </script>
       <script type="module" src="${webviewPanel.webview.asWebviewUri(
         webviewUri
       )}"></script>
