@@ -1,8 +1,8 @@
 {
   "name": "pose",
   "displayName": "Pose Viewer",
-  "description": "visualize .pose files right in your vscode",
-  "version": "0.0.41",
+  "description": "visualize .pose files with flexible controls right in your vscode",
+  "version": "0.1.0",
   "icon": "images/pose.png",
   "publisher": "bipinkrish",
   "license": "MIT",
@@ -48,10 +48,11 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "rm -rf out && npm run compile",
+    "package:prepublish": "rm -rf out && npm run compile",
     "compile": "tsc -p ./ && webpack --mode production",
     "watch": "tsc -w -p ./ & webpack --mode development --watch",
-    "lint": "eslint \"src/**/*.ts*\""
+    "lint": "eslint \"src/**/*.ts*\"",
+    "package": "npm run package:prepublish && vsce package"
   },
   "devDependencies": {
     "@types/node": "^18",
@@ -71,6 +72,7 @@
     "@stencil/core": "^4.23.0",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
+    "@vscode/vsce": "^3.3.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-pose-viewer": "^1.0.32",

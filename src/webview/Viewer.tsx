@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { PoseViewer } from "react-pose-viewer";
 
 export const Viewer: React.FC = () => {
-  // @ts-ignore magic
+  // @ts-expect-error magic
   const documentSrc = documentUri;
   const viewer = useRef(null);
   const [counter, setCounter] = useState(0);
