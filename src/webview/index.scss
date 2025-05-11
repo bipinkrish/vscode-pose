@@ -1,97 +1,101 @@
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
-  width: 100vw;
+  width: 98vw; // in case of scrollbar
   margin: 0px;
   padding: 0px;
-}
 
-.viewer-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 100vw;
-}
+  #root {
+    width: 100%;
+    height: 100%;
+  }
 
-.control-bar {
-  display: flex;
-  gap: 16px;
-  padding: 12px;
-  background-color: var(--vscode-editor-background);
-  border-top: 1px solid var(--vscode-widget-border);
-}
+  .vscode-react-pose-viewer {
+    position: relative;
+    width: 100%;
+    height: 100%;
 
-.control-group {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
+    .viewer-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
 
-.control-group label {
-  color: var(--vscode-foreground);
-  font-size: 12px;
-}
+      pose-viewer {
+        padding: 1rem;
+      }
+    }
 
-.control-group select,
-.control-group input[type="number"] {
-  background-color: var(--vscode-input-background);
-  color: var(--vscode-input-foreground);
-  border: 1px solid var(--vscode-input-border);
-  padding: 4px 8px;
-  border-radius: 2px;
-}
+    .floating-controls {
+      position: fixed;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 0.5rem;
+      align-items: center;
+      justify-content: space-around;
+      width: calc(100% - 7rem);
+      bottom: 2rem;
+      margin: 0rem 3rem;
+      border-radius: 0.5rem;
+      background-color: var(--vscode-diffEditor-unchangedRegionBackground);
+      border: 0.0625rem solid var(--vscode-widget-border);
+      z-index: 1000;
 
-.size-inputs {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
+      .control-group,
+      .playback-controls {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
 
-.size-inputs span {
-  color: var(--vscode-foreground);
-}
+      input,
+      select {
+        outline: none;
+      }
 
-.playback-controls {
-  display: flex;
-  gap: 4px;
-}
+      input[type="range"] {
+        width: 8rem;
+        cursor: pointer;
+      }
 
-.playback-controls button {
-  background-color: var(--vscode-button-secondaryBackground);
-  color: var(--vscode-button-secondaryForeground);
-  border: none;
-  padding: 4px 8px;
-  border-radius: 2px;
-  cursor: pointer;
-}
+      input[type="color"] {
+        width: 2rem;
+        height: 2rem;
+        padding: 0;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+      }
 
-.playback-controls button.active {
-  background-color: var(--vscode-button-background);
-  color: var(--vscode-button-foreground);
-}
+      select,
+      button,
+      input[type="number"] {
+        width: 5rem;
+        background-color: var(--vscode-input-background);
+        color: var(--vscode-input-foreground);
+        border: 0.0625rem solid var(--vscode-input-border);
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+      }
 
-input[type="range"] {
-  width: 100px;
-  background-color: var(--vscode-input-background);
-}
+      button {
+        cursor: pointer;
 
-input[type="color"] {
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border: 1px solid var(--vscode-input-border);
-  background-color: var(--vscode-input-background);
-}
+        &.active {
+          background-color: var(--vscode-button-background);
+          color: var(--vscode-button-foreground);
+        }
+      }
 
-.floating-controls {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: var(--vscode-editor-background);
-  border: 1px solid var(--vscode-widget-border);
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      .pb-rate {
+        width: 2rem;
+      }
+
+      .size-inputs span {
+        margin: 0 0.25rem;
+      }
+    }
+  }
 }
